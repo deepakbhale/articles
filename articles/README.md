@@ -1,29 +1,65 @@
 # Pre-Interview Exercise
 
 ## Overview
-Implementation of a shopping cart in Java.
+REST API for articles
 
 ## Requirement
-Given:
+The first endpoint, POST /articles should handle the receipt of some article data in json format, and store it within the service.
 
-An empty shopping cart
-And a product, Dove Soap with a unit price of 39.99
-When:
+The second endpoint GET /articles/{id} should return the JSON representation of the article.
 
-The user adds 5 Dove Soaps to the shopping cart
-Then:
+The final endpoint, GET /tags/{tagName}/{date} will return the list of articles that have that tag name on the given date and some summary data about that tag for that day.
 
-The shopping cart should contain 5 Dove Soaps each with a unit price of 39.99
-And the shopping cart’s total price should equal 199.95
+An article has the following attributes id, title, date, body, and list of tags. for example:
 
+{
+  "id": "1",
+  "title": "latest science shows that potato chips are better for you than sugar",
+  "date" : "2016-09-22",
+  "body" : "some text, potentially containing simple markup about how potato chips are great",
+  "tags" : ["health", "fitness", "science"]
+}
 
+The GET /tag/{tagName}/{date} endpoint should produce the following JSON. Note that the actual url would look like /tags/health/20160922.
+
+{
+  "tag" : "health",
+  "count" : 17,
+    "articles" :
+      [
+        "1",
+        "7"
+      ],
+    "related_tags" :
+      [
+        "science",
+        "fitness"
+      ]
+}
+The related_tags field contains a list of tags that are on the articles that the current tag is on for the same day. It should not contain duplicates.
+
+The count field shows the number of tags for the tag for that day.
+
+The articles field contains a list of ids for the last 10 articles entered for that day.
 ## Assumption
 
-Stock is available in databse and I have not written Dao and Db connetion instead have initialised stock in product in Products class. 
+Not connected to database instead  added and fetched dta from map within ArticlesServiceImpl.java
 
 ## Prerequisites
 - Java 8
 - Maven 3
+- Eclipse IDE for Java Developers Version: 2019-12 (4.14.0)
+
+
+## Installation 
+
+Checkout the folder from gitHub and import it as Maven project
+Right click on project->maven->update Project 
+Set Maven build goal spring-boot:run and execute it.
+
+I have tested using Postman as well as unit test cases
+
+
 
 ## Build
 `mvn clean install`
@@ -32,4 +68,4 @@ Stock is available in databse and I have not written Dao and Db connetion instea
 `mvn clean test`
 
 ## Version
-04fa1404c2b3b7be0e5909d4ba93d1332bc76e98
+v1
