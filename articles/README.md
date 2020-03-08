@@ -1,4 +1,3 @@
-# Pre-Interview Exercise
 
 ## Overview
 REST API for articles
