@@ -40,6 +40,15 @@ The related_tags field contains a list of tags that are on the articles that the
 The count field shows the number of tags for the tag for that day.
 
 The articles field contains a list of ids for the last 10 articles entered for that day.
+
+## Design
+
+please refer swagger.yaml for Low evel Design
+
+## Postman test cases
+
+To connect to API deployed in AWS pl refer AWS-ArtcileAPITest.postman_collection
+
 ## Assumption
 
 Not connected to database instead  added and fetched dta from map within ArticlesServiceImpl.java
